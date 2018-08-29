@@ -23,7 +23,7 @@ def lambda_handler(event, context):
     # msg = watson_conversation('techcafeって？')
     return {
         "statusCode": 200,
-        "body": { "message": msg }
+        "body": { "text": msg }
     }
 
 def watson_conversation(msg):
