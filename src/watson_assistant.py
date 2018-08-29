@@ -4,13 +4,26 @@ from watson_developer_cloud import ConversationV1
 
 
 def lambda_handler(event, context):
+    """
+    event:
+        token=XXXXXXXXXXXXXXXXXX
+        team_id=T0001
+        team_domain=example
+        channel_id=C2147483705
+        channel_name=test
+        thread_ts=1504640714.003543
+        timestamp=1504640775.000005
+        user_id=U2147483697
+        user_name=Steve
+        text=googlebot: What is the air-speed velocity of an unladen swallow?
+        trigger_word=googlebot:
+    """
 
-    msg = watson_conversation('techcafeって？')
+    msg = watson_conversation(event.text)
+    # msg = watson_conversation('techcafeって？')
     return {
         "statusCode": 200,
-        "body": json.dumps(
-            { "message": msg }
-        ),
+        "body": { "message": msg }
     }
 
 def watson_conversation(msg):
@@ -29,5 +42,5 @@ def watson_conversation(msg):
         }
     )
 
-    print(json.dumps(response, ensure_ascii=False, indent=2))
+    # print(json.dumps(response, ensure_ascii=False, indent=2))
     return response['output']['text'][0]
