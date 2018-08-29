@@ -9,4 +9,4 @@ before_install:
     - cp src/*.py src/build/
 script:
     - aws cloudformation package --template-file template.yaml --s3-bucket sam-template-packaged --output-template-file output.yaml
-    - aws cloudformation deploy --template-file output.yaml --stack-name watson --capabilities CAPABILITY_IAM
+    - aws cloudformation deploy --template-file output.yaml --stack-name watson --capabilities CAPABILITY_IAM --region us-east-1
