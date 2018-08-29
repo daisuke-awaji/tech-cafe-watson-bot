@@ -4,6 +4,7 @@ python:
   - "3.6"
 before_install:
     - pip install -r requirements.txt -t src/build/
+    - pip install awscli
     - cp src/*.py src/build/
 script:
     - aws cloudformation package --template-file template.yaml --s3-bucket sam-template-packaged --output-template-file output.yaml
