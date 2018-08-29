@@ -5,7 +5,7 @@ This is a sample template for tech-cafe-watson-bot - Below is a brief explanatio
 ```bash
 .
 ├── README.md                   <-- This instructions file
-├── hello_world                 <-- Source code for a lambda function
+├── src                         <-- Source code for a lambda function
 │   ├── __init__.py
 │   └── app.py                  <-- Lambda function code
 ├── requirements.txt            <-- Python dependencies
@@ -30,11 +30,11 @@ This is a sample template for tech-cafe-watson-bot - Below is a brief explanatio
 [AWS Lambda requires a flat folder](https://docs.aws.amazon.com/lambda/latest/dg/lambda-python-how-to-create-deployment-package.html) with the application as well as its dependencies. Therefore, we need to have a 2 step process in order to enable local testing as well as packaging/deployment later on - This consist of two commands you can run as follows:
 
 ```bash
-pip install -r requirements.txt -t hello_world/build/
-cp hello_world/*.py hello_world/build/
+pip install -r requirements.txt -t src/build/
+cp src/*.py src/build/
 ```
 
-1. Step 1 install our dependencies into ``build`` folder 
+1. Step 1 install our dependencies into ``build`` folder
 2. Step 2 copies our application into ``build`` folder
 
 **NOTE:** As you change your application code as well as dependencies during development you'll need to make sure these steps are repeated in order to execute your Lambda and/or API Gateway locally.
@@ -70,7 +70,7 @@ AWS Lambda Python runtime requires a flat folder with all dependencies including
     HelloWorldFunction:
         Type: AWS::Serverless::Function
         Properties:
-            CodeUri: hello_world/
+            CodeUri: src/
             ...
 ```
 
@@ -106,11 +106,11 @@ After deployment is complete you can run the following command to retrieve the A
 aws cloudformation describe-stacks \
     --stack-name tech-cafe-watson-bot \
     --query 'Stacks[].Outputs'
-``` 
+```
 
 ## Testing
 
-We use **Pytest** for testing our code and you can install it using pip: ``pip install pytest`` 
+We use **Pytest** for testing our code and you can install it using pip: ``pip install pytest``
 
 Next, we run `pytest` against our `tests` folder to run our initial unit tests:
 
