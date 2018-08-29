@@ -42,7 +42,7 @@ Resources:
           Type: Api
           Properties:
             Path: /watson
-            Method: get
+            Method: post
 
 Outputs:
   HelloWorldApi:
