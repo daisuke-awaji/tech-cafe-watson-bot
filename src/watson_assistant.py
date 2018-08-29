@@ -20,10 +20,9 @@ def lambda_handler(event, context):
     """
 
     msg = watson_conversation(event['text'])
-    # msg = watson_conversation('techcafeって？')
+    print(msg)
     return {
-        "statusCode": 200,
-        "body": { "text": msg }
+        "text": msg
     }
 
 def watson_conversation(msg):
