@@ -19,7 +19,7 @@ def lambda_handler(event, context):
         trigger_word=googlebot:
     """
 
-    msg = watson_conversation(event.text)
+    msg = watson_conversation(event['text'])
     # msg = watson_conversation('techcafeって？')
     return {
         "statusCode": 200,
